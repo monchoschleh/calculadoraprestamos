@@ -1,0 +1,12 @@
+#cuadrado1 {
+background-color: aqua;
+width: 400px;
+height: 200px;
+display: none;
+}
+
+#cuadrado2 {
+background-color: orange;
+width: 400px;
+height: 200px;
+}

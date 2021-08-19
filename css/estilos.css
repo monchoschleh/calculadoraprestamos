@@ -1,0 +1,175 @@
+#box1 {
+background-color: rgb(44, 114, 119);
+height: 100vh;
+padding-top: 40vh;
+text-align: center;
+}
+
+#box2 {
+height: 100vh;
+text-align: center;
+align-content: center;
+background-image: url("img/dolares.jpg") ;
+}
+
+#titulo {
+    color: white;
+    font-size: 40px;
+    font-family: 'Syncopate', sans-serif;
+}
+
+#formu {
+    width: 500px;
+    background-color: rgba(177, 184, 177, 0.705);
+    height: 430px;
+    text-align: center;
+    margin-left: 15%;
+    margin-top: 4%;
+    margin-bottom: 0px;
+    padding-bottom: 0;
+
+}
+
+#box3 {
+    background-color: rgba(85, 160, 131, 0.733);
+    font-size: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+}
+
+#box4 {
+    width: 240px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+#box5 {
+    width: 240px;
+    margin-top: 20px;
+}
+
+#box6 {
+    width: 150px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+#box7 {
+    width: 330px;
+    margin-top: 20px;
+}
+
+
+.monto2 {
+    width: 457px;
+    margin-left: 20px;
+    margin-top: 20px;
+  }
+
+.nombre {
+    width: 350px;
+}
+
+.apeliido {
+    width: 240px;
+}
+.boton1 {
+    width: 300px;
+    margin-top: 20px;
+    font-size: 40px;
+}
+#box8 {
+    width: 380px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+#box9 {
+    width: 100px;
+    margin-top: 20px;
+}
+
+
+#impar {
+    height: 300px;
+    width: 500px;
+    display:;
+    margin-left: 15%;
+    background-color: rgba(138, 138, 138, 0.733);
+    margin-top: 20px;
+    padding-top: 0;
+    border: 1px solid rgb(133, 133, 133);
+    border-radius: 20px 70px 20px 70px;
+}
+
+#par {
+    height: 300px;
+    width: 500px;
+    display:;
+    margin-left: 15%;
+    background-color: rgba(85, 160, 131, 0.733);
+    margin-top: 20px;
+    padding-top: 0;
+    border: 1px solid rgba(85, 160, 131, 0.911);;
+    border-radius: 70px 20px 70px 20px;
+}
+#textopres {
+    padding-top: 20px;
+    color: white;
+    font-size: 20px;
+}
+
+.fondo1 {
+    background-color: teal;
+    height: 500px;
+    width: 100%;
+}
+
+#borrar {
+    width: 30px;
+    height: 30px;
+    margin-left: 47%;
+    margin-top: 10px;
+}
+
+.iconoborrar {
+    width: 30px;
+    height: 30px;
+}
+
+.iconoborrar2 {
+    width: 30px;
+    height: 30px;
+}
+
+.iconoborrar:hover {
+    animation: jello;
+    animation-duration: 1s; 
+}
+
+.iconoborrar2:hover {
+    animation: jello;
+    animation-duration: 1s; 
+}
+
+.carrito {
+    background-color: rgba(49, 94, 105, 0.966);
+    height: 600px;
+    width: 800px;
+    position: fixed;
+    z-index: 2;
+    margin-left: 20%;
+    top: 180px;
+    display: none;
+    border: 1px solid rgba(85, 160, 131, 0.911);
+    border-radius: 70px 20px 70px 20px;
+}
+
+.botoncerrar {
+    margin-top: 15px;
+}
+
+.titulo {
+    font-size: 30px;
+    color: white;
+}
