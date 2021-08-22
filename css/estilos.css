@@ -173,3 +173,45 @@ background-image: url("img/dolares.jpg") ;
     font-size: 30px;
     color: white;
 }
+
+th {
+    color: white;
+}
+
+td {
+    color: white;
+}
+
+.table3 {
+margin-top: 100px;
+}
+
+#boton3 {
+    margin-left: auto;
+    margin-right: auto;
+    bottom: 200px;
+    right: 970px;
+}
+
+#dolarblue {
+    width: 400px;
+    height: 100px;
+    background-color: rgba(93, 199, 207, 0.726);
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    text-align: left;
+    font-size: 20px;
+    padding-left: 10PX;
+    border: 1px solid rgba(85, 160, 131, 0.911);
+    border-radius: 70px 20px 70px 20px;
+}
+
+.dol {
+    padding-top: 32px;
+}
+
+.dol2 {
+    padding-top: 10px;
+    text-align: center;
+}

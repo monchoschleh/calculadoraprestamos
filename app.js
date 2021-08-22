@@ -19,6 +19,69 @@ let listadoprestamos = [];
 let boton = $("#boton");
 let botonborrar = $("#iconoborrar")
 
+function corroborador (e) {
+    let monto = $("#mont").val();
+    let cuotas = $("#cuot").val();
+    let nombre = $("#nomb").val();
+    let apellido = $("#ape").val();
+    let sexo = $("#sex").val();
+    let situacion = $("#sit").val();
+    let email = $("#email").val();
+    let documento = $("#dni").val();
+    let telefono = $("#tel").val();
+    
+    if (monto == "") {
+        alert ("Ingrese un monto");
+        e.preventDefault();
+    } else {
+        if (cuotas == "") {
+            alert ("Ingrese numero de cuotas");
+            e.preventDefault();
+        } else {
+            if (nombre == "") {
+                alert ("Ingrese su nombre");
+                e.preventDefault();
+            } else {
+                if (apellido == "") {
+                    alert ("Ingrese su apellido");
+                    e.preventDefault();
+                } else {
+                    if (sexo == "") {
+                        alert ("Ingrese su genero");
+                        e.preventDefault();
+                    } else {
+                        if (situacion == "") {
+                            alert ("Ingrese su situacion laboral");
+                            e.preventDefault();
+                        } else {
+                            if (email == "") {
+                                alert ("Ingrese su Email");
+                                e.preventDefault();
+                            } else {
+                                if (documento == "") {
+                                    alert ("Ingrese su numero de documento");
+                                    e.preventDefault();
+                                } else {
+                                    if (telefono == "") {
+                                        alert ("Ingrese su numero de telefono");
+                                        e.preventDefault();
+                                    } else {
+                                        calculadora ();
+                                    
+                                }
+                            }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+    
+
+
+
 
 function calculadora (e) {
     //e.preventDefault();
@@ -68,6 +131,7 @@ function imprimirDatos () {
     let imprimir = JSON.parse (localStorage.getItem("listadoprestamos"))
     if (imprimir != null) {
         imprimir.forEach (element => {
+            let final2 = element.final.toFixed();
             let tabla
             if (element.id % 2 == 0) {
                 var tablac = "impar";
@@ -82,7 +146,7 @@ function imprimirDatos () {
                 <br>Dni: ${element.documento} 
                 <br>Telefono: ${element.telefono} 
                 <br>Email: ${element.email}
-                <br>Pagaras $${element.final} en ${element.cuotas} cuotas con ${element.inter}% de intereses
+                <br>Pagaras $${final2} en ${element.cuotas} cuotas con ${element.inter}% de intereses
             </p>
         </div>`);
         });
@@ -111,28 +175,109 @@ function carrito () {
 }
 
 function iconoborrar2 () {
-    $(".carrito").slideUp (1000);
+    $(".carrito").slideUp (1000, function() {
+        location.reload();
+    });
 }
 
 function botoncarrito () {
     if (localStorage.getItem("listadoprestamos") != null) {
         let botoncarrito = JSON.parse (localStorage.getItem("listadoprestamos"));
         if (botoncarrito.length >= 1) {
-            $("#botoncarrito").append (`<button class="btn btn-secondary boton1" id="boton2">Confirmar prestamos</button>`);
+            $("#botoncarrito").append (`<button class="btn btn-secondary boton1" id="boton2">Ver Resumen</button>`);
         }
     }
 }
 
+function resumen () {
+    let id = 0
+    let total = 0
+    let resumen = JSON.parse (localStorage.getItem("listadoprestamos"));
+    resumen.forEach (element => {
+        id = id + 1;
+        total = total + element.final;
+        total2 = total.toFixed();
+        final2 = element.final.toFixed();
+        const cuot = element.final / element.cuotas;
+        const cuot2 = cuot.toFixed();
+        $("#tabla").append (`                    <tr>
+        <td>${id}</td>
+        <td>$${element.monto}</td>
+        <td>${element.cuotas} de $${cuot2}</td>
+        <tD>${element.inter}%</td>
+        <tD>$${final2}</td>
+    </tr>`)
+    })
+    $("#tabla2").append (`                    <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th>Total:</th>
+    <th>$${total2}</th>
+</tr>`)
+}
 
+function felicitaciones () {
+    let felicitaciones = JSON.parse (localStorage.getItem("listadoprestamos"));
+    let total = 0
+    felicitaciones.forEach (element => {
+        total = total + element.final;
+        total2 = total.toFixed();
+    })
+    alert (`¡Felicitaciones tenes $${total2} sos rico!`)
+    redireccionar ();
+}
+
+function redireccionar(){
+    location.href="https://www.youtube.com/watch?v=4ue2a6wN_wo";
+}
+
+const URLJSON = "https://www.dolarsi.com/api/api.php?type=valoresprincipales";
+
+
+function apidolar () {
+  $.getJSON(URLJSON, function (respuesta, estado) {
+    if(estado === "success"){
+      let misDatos = respuesta;
+      console.log (misDatos);
+      let actualizado = misDatos.filter (e => e.casa.nombre == "Dolar Blue");
+      console.log (actualizado);
+      actualizado.forEach(element => {
+        $("#dolarblue").prepend(`<div class="col-md-4 col-sm-4 col-xs-4 dol">
+        <p>Dolar Blue</p>
+    </div>
+    <div class="col-md-4 col-sm-4 col-xs-4 dol2">
+        <p>Compra</p>
+        <p>$${element.casa.compra}</p>
+    </div>
+    <div class="col-md-4 col-sm-4 col-xs-4 dol2">
+        <p>Venta</p>
+        <p>$${element.casa.venta}</p>
+    </div>`)
+      }) 
+
+    }
+    });
+}
+
+
+
+
+
+apidolar ();
 botoncarrito ();
 imprimirDatos();
 
 
 $("#iconoborrar2").click (iconoborrar2);
 $("#boton2").click (carrito);
-$("#boton").click (calculadora);
+$("#boton2").click (resumen);
+$("#boton").click (corroborador);
 $(".iconoborrar").click (borrardato);
+$("#boton3").click (felicitaciones);
 
-//onclick="borrardato(${element.id})
 
-//<button class="borrardato" onclick="borrardato(${element.id})"> borrar</button>
+
+
+
+
